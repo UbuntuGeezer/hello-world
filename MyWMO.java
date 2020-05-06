@@ -1,5 +1,5 @@
 /*
- * MyWMN.java - 4th instantiation example.
+ * MyWMMO.java - 5th instantiation example.
  * 
  * 
  * 
@@ -12,25 +12,30 @@ import java.awt.*;
 // local subdirectory contains GeoRectangle class definition
 
 
-class MyWMN {
+class MyWMO {
 	
-	public void MyWMN (){
-	 GeoRectangle rect1;	// define 4 rectangles
-	 GeoRectangle rect2 = new GeoRectangle();
-	 GeoRectangle rect3;
-	 GeoRectangle rect4;
-}	// end MyWMN constructor
+	 private GeoRectangle rect1;	// define 4 rectangles
+	 private GeoRectangle rect2 = new GeoRectangle();
+	 private GeoRectangle rect3;
+	private GeoRectangle rect4;
+
+	public void MyWMO (){
+		initVars(this.rect1,4,5);
+}	// end MyWMO constructor
 
 // Note: non-static method cannot be invoked by static method.
 // this. reference only legal in non-static method.	
 // even so, this.rect2 is not found...
-public static void initVars( GeoRectangle aRect ){
-	aRect.setDims(4,5);
+public void initVars( GeoRectangle aRect, int i, int j ){
+	aRect.setDims(i,j);
+	System.out.println("in initVars, passed rectangle dimensions...");
+	aRect.showDims();
 }	// end initVars
 		
 
 //	public void main (String[] args) {		// main must be static or will not execute
-	public static void main (String[] args) {		
+	public static void main (String[] args) {
+			
 		GeoRectangle rect = new GeoRectangle();
 		System.out.println("rect immediately after constructor invoked...");
 		rect.showDims();
@@ -38,8 +43,8 @@ public static void initVars( GeoRectangle aRect ){
 //		this.rect2.setDims(4,5);	// won't compile, can't use this. in static context
 		GeoRectangle rect2 = new GeoRectangle();
 		// MyWMN adds the following line...
-		rect2 = rect;			// create new instance
-		initVars(rect2);			// initialize var rect2
+//		rect2 = rect;			// create new instance
+//		initVars(rect2);			// initialize var rect2
 
 		System.out.println("rect2 immediately after rect2 values set...");
 		rect2.showDims();
@@ -52,5 +57,5 @@ public static void initVars( GeoRectangle aRect ){
 		rect2.showDims();
 	}	// end main method
 	
-}	// end MyWMN class
+}	// end MyWMO class
 
