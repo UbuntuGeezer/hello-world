@@ -40,12 +40,18 @@ class MyWMK {
 	
 	public static void main (String[] args) {
 		GeoRectangle rect = new GeoRectangle();
-		System.out.println("immediately after constructor invoked...");
+		System.out.println("rect immediately after constructor invoked...");
 		rect.showDims();
-		rect.setDims(1,2);
-		System.out.println(" after .setDims reference...");
+		GeoRectangle rect2 = new GeoRectangle(4,5);
+		System.out.println("rect2 immediately after rect2 constructor invoked...");
+		rect2.showDims();
+		System.out.println("rect immediately after rect2 constructor invoked...");
 		rect.showDims();
-//		rect1.showDims();
+		rect.setDims(3,4);
+		System.out.println(" rect after rect.setDims reference...");
+		rect.showDims();
+		System.out.println(" rect 2 after rect.setDims invoked...");
+		rect2.showDims();
 	}	// end main method
 	
 }	// end MyWMK class

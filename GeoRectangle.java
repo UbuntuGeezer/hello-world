@@ -13,17 +13,17 @@
 
 public class GeoRectangle {
 	
-	int length;		// length field
-	int width;		// width field
+	static int length;		// length field
+	static int width;		// width field
 	
-	public void GeoRectangle() {
+	GeoRectangle() {
 		length = 1;
 		width = 2;
 	}	// end no params constructor
 	
-	public void GeoRectangle(int i, int j){
-		length = i;
-		width = j;
+	GeoRectangle(int i, int j){
+		this.length = i;
+		this.width = j;
 	}	// end length width constructor
 
 	public void showDims(){		
