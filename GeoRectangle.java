@@ -2,8 +2,12 @@
  * GeoRectangle.java - rectangle class definition
  * 
  * This class demonstrates how instantiation works when referenced by
- * another class.
- * 
+ * another class. It also demonstrates what the static attribute
+ * does when imposed on a class field. For the GeoRectangle class
+ * all rectangle instances will have the same length and width
+ * whenever anything is done. If the constructor is invoked, the
+ * dimensions will be reset either to the new dimensions (two parameters)
+ * or the default dimensions [1,2] (no parameters). 
  * 
  * 
  */
@@ -12,7 +16,11 @@
 
 
 public class GeoRectangle {
-	
+
+// Note. Declaring class fields static can make it appear that a new
+//	instance has not been created. You can discern this by comparing
+//	any two instances; although the dimensions are the same, they
+//	will test != in comparisons, because of being different instances.	
 	static int length;		// length field
 	static int width;		// width field
 	

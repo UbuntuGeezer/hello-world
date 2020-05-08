@@ -1,9 +1,11 @@
 /*
- * MyWMMP.java - 6th instantiation example.
+ * MyWMMQP.java - 7th instantiation example.
  * 	5/8/20.
  * 
  * This example shows how a "basic" program with conventional main
- * and subroutine structure translates into java.
+ * and subroutine structure translates into java. It also demonstrates
+ * instantiating a class that has some static fields, so they get
+ * preserved across instances.
  * 
  */
 
@@ -14,7 +16,7 @@ import java.awt.*;
 // local subdirectory contains GeoRectangle class definition
 
 
-class MyWMP {
+class MyWMQ {
 // note. The class definition that contains main cannot contain
 // any non-static methods called by main. The way to program an App
 // that has "subroutines" is to declare <reference class> container
@@ -37,12 +39,12 @@ class MyWMP {
 //	 private GeoRectangle rect2 = new GeoRectangle();
 // Note: even declaring rect1 and rect2 static does not preserve their
 // individual length and width fields. The fields would have to be 
-// declared static in the GeoRectangle class to preserve their values
+// insured to be NOT static in the GeoRectangle class to preserve their values
 // across "new" instantiations or set Dims() method calls.
-	 private static GeoRectangle rect1;	// define 4 rectangles
-	 private static GeoRectangle rect2 = new GeoRectangle();
-	 private GeoRectangle rect3;
-	private GeoRectangle rect4;
+	 private GeoRect rect1;	// define 4 rectangles
+	 private GeoRect rect2 = new GeoRect();
+	 private GeoRect rect3;
+	private GeoRect rect4;
 
 	// primary class constructor.
 	
@@ -53,32 +55,9 @@ class MyWMP {
 //	public void main (String[] args) {		// main must be static or will not execute
 	public static void main (String[] args) {
 			
-		MyWMP call = new MyWMP();		// execute constructor
+		MyWMQ call = new MyWMQ();		// execute constructor
 		call.Sub1();					// execute "subroutine" Sub1
 		call.Sub2();					// execute "subroutine" Sub2
-/*
- * 		GeoRectangle rect = new GeoRectangle();
- *		System.out.println("rect immediately after constructor invoked...");
- *	rect.showDims();
-//		rect2.setDims(4,5);		// won't compile, rect2 not known
-//		this.rect2.setDims(4,5);	// won't compile, can't use this. in static context
-		// MyWMN adds the following line...
-//		rect2 = rect;			// create new instance
-//		initVars(rect2);			// initialize var rect2
-
-		System.out.println("rect2 immediately after rect2 values set...");
-		rect2.showDims();
-		System.out.println("rect immediately after rect2 values set...");
-		rect.showDims();
-*/	//end extracted to Sub1
-
-/*	begin extracted to Sub2
-		rect.setDims(3,4);
-		System.out.println(" rect after rect.setDims reference...");
-		rect.showDims();
-		System.out.println(" rect 2 after rect.setDims invoked...");
-		rect2.showDims();
-*/	// end extracted to Sub2
 
 	}	// end main method
 
@@ -87,21 +66,30 @@ class MyWMP {
 	
 	private void Sub1(){
 
-		GeoRectangle rect = new GeoRectangle();
-		GeoRectangle rect2 = new GeoRectangle(4,5);
+		GeoRect rect = new GeoRect();
+		GeoRect rect_m = new GeoRect();
 
 		System.out.println("in Sub1...");
-		System.out.println("rect immediately after rect2 values set...");
+		System.out.println("rect immediately after constructor values set... [1,2]");
 		rect.showDims();
 
-		System.out.println("rect2 immediately after rect2 values set...");
-		rect2.showDims();
+		System.out.println("rect_m immediately after constructor values set... [1,2]");
+		rect_m.showDims();
 
+		rect.setDims(4,5);
+		System.out.println("rect immediately after setDims(4,5);... [4,5]");
+		rect.showDims();
+
+		System.out.println("rect_m immediately after rect.setDims(4.5)... [1,2]");
+		rect_m.showDims();
+		
 }	// end Sub1
 
 private void Sub2(){
 	// use this class vars rect1 and rect2 as rectangles	
-		rect1 = new GeoRectangle();
+		rect1 = new GeoRect();
+		System.out.println("");
+		System.out.println("in Sub2...");
 
 		rect1.setDims(3,4);
 		System.out.println(" rect1 after rect1.setDims reference...");
@@ -111,7 +99,7 @@ private void Sub2(){
 		// to width 4 length 5
 		rect2.setDims(4,5);	// note: this destroys the rect1 values..
 		System.out.println(" rect 2 after rect2.setDims invoked...");
-		rect1.showDims();
+		rect2.showDims();
 		System.out.println(" rect1 after rect2.setDims reference...");
 		rect1.showDims();
 		if( rect1 == rect2 ) {
@@ -127,7 +115,7 @@ private void Sub2(){
 // Note: non-static method cannot be invoked by static method.
 // this. reference only legal in non-static method.	
 // even so, this.rect2 is not found...
-public void initVars( GeoRectangle aRect, int i, int j ){
+public void initVars( GeoRect aRect, int i, int j ){
 	aRect.setDims(i,j);
 	System.out.println("in initVars, passed rectangle dimensions...");
 	aRect.showDims();
