@@ -12,5 +12,5 @@ About This. It has been a learning curve to get back into OOP with the newest de
 uncovered some interesting "behaviors" of the languages and classes as I claw my way back in. This repository is my way of sharing
 coding samples that have been illuminating along the path of discovering 21st century application coding in the Linux world. It is
 intended to be of interest to both novice and developer alike, as I tend to deviate from "normal" application development while
-pursuing in-depth study of a new universe of knowledge. I welcome feedback and critquing, but only after the initial volatile "I'm
+pursuing in-depth study of a new universe of knowledge. I welcome feedback and critiquing, but only after the initial volatile "I'm
 right!" defense mechanism. Hopefully, you can find some of my errant assumptions laughable as you read my code.
