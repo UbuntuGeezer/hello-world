@@ -1,5 +1,5 @@
 # hello-world
-Repository of esoteric anomalies discovered in the lre-learning curve of Linux world open-system coding in the 21st century.
+Repository of esoteric anomalies discovered in the re-learning curve of Linux world open-system coding in the 21st century.
 
 About ME: A "has-been" systems analyst from Control Data's heyday in the late 60's and 70's; left off software development about
 20 years ago after a brief stint as an embedded systems programmer using C++ and VB on Windows system variants. The "coderman" took
